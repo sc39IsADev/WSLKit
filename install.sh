@@ -24,8 +24,8 @@ apt install git
 function InstallX11() {
 	apt update
 	apt install xterm x11-apps
-	echo `
-	export DISPLAY=:0.0` >> ~/.bashrc
+	echo "
+	export DISPLAY=:0.0" >> ~/.bashrc
 }
 function InstallMWMAndTWM() {
 	apt update
