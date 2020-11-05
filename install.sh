@@ -32,19 +32,8 @@ function InstallMWMAndTWM() {
 	InstallX11
 	apt install mwm twm
 }
-function InstallGnome() {
-	apt install ubuntu-desktop gnome
-	InstallX11
-	echo `
-	export LIBGL_ALWAYS_INDIRECT=1` >> ~/.bashrc
-	git clone https://github.com/DamionGans/ubuntu-wsl2-systemd-script.git
-	cd ubuntu-wsl2-systemd-script/
-	bash ubuntu-wsl2-systemd-script.sh
-	cd ..
-}
 InstallX11
 InstallMWMAndTWM
-InstallGnome
 
 # Install other apps/tools
 
@@ -65,11 +54,6 @@ xterm &
 ` > /wslkit/start-mwm
 echo `
 #!/bin/bash
-gnome-session &
-gnome-terminal &
-` > /wslkit/start-gnome
-echo `
-#!/bin/bash
 kill $(pidof twm)
 kill $(pidof xterm)
 ` > /wslkit/stop-twm
@@ -78,21 +62,15 @@ echo `
 kill $(pidof mwm)
 kill $(pidof xterm)
 ` > /wslkit/stop-mwm
-echo `
-#!/bin/bash
-kill $(pidof gnome-session)
-kill $(pidof gnome-terminal)
-` > /wslkit/stop-gnome
 chmod +x /wslkit/start-twm
 chmod +x /wslkit/start-mwm
-chmod +x /wslkit/start-gnome
 chmod +x /wslkit/stop-twm
 chmod +x /wslkit/stop-mwm
-chmod +x /wslkit/stop-gnome
 echo `
 export PATH=$PATH:/wslkit` >> ~/.bashrc
 source ~/.bashrc
 echo "Installed! You can now use the following commands:"
 echo "start-twm"
 echo "start-mwm"
-echo "start-gnome"
+echo "stop-twm"
+echo "stop-mwm"
