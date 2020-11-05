@@ -42,32 +42,32 @@ apt install build-essential autoconf automake mesa-utils crispy-doom emacs xemac
 # Generate wrappers
 
 mkdir /wslkit
-echo `
+echo """
 #!/bin/bash
 twm &
 xterm &
-` > /wslkit/start-twm
-echo `
+""" > /wslkit/start-twm
+echo """
 #!/bin/bash
 mwm &
 xterm &
-` > /wslkit/start-mwm
-echo `
+""" > /wslkit/start-mwm
+echo """
 #!/bin/bash
 kill $(pidof twm)
 kill $(pidof xterm)
-` > /wslkit/stop-twm
-echo `
+""" > /wslkit/stop-twm
+echo """
 #!/bin/bash
 kill $(pidof mwm)
 kill $(pidof xterm)
-` > /wslkit/stop-mwm
+""" > /wslkit/stop-mwm
 chmod +x /wslkit/start-twm
 chmod +x /wslkit/start-mwm
 chmod +x /wslkit/stop-twm
 chmod +x /wslkit/stop-mwm
-echo `
-export PATH=$PATH:/wslkit` >> ~/.bashrc
+echo """
+export PATH=$PATH:/wslkit""" >> ~/.bashrc
 source ~/.bashrc
 echo "Installed! You can now use the following commands:"
 echo "start-twm"
