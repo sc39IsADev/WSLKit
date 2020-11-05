@@ -37,7 +37,7 @@ InstallMWMAndTWM
 
 # Install other apps/tools
 
-apt install build-essential autoconf automake mesa-utils prboom-plus prboom-plus-game-server chocolate-doom crispy-doom emacs xemacs21 idle3 wget curl
+apt install build-essential autoconf automake mesa-utils crispy-doom emacs xemacs21 wget curl
 
 # Generate wrappers
 
